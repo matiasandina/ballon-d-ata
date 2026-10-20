@@ -19,6 +19,7 @@ DETAIL_SCHEMA = [
 ]
 NUMERIC_COLUMNS = {"year", "rank", "points", "percent", "1st", "2nd", "3rd", "4th", "5th", "votes"}
 REQUIRED_TEXT = {"player", "club"}
+FIFA_EQUAL_WEIGHT_PERCENT_YEARS = set(range(2010, 2016))
 
 
 @dataclass(frozen=True)
@@ -144,7 +145,7 @@ def _main_dataset_findings(dataset: dict[str, Any]) -> list[dict[str, Any]]:
         points = [_number(r["points"]) for r in group]
         percents = [_number(r["percent"]) for r in group]
         if any(value is None for value in points):
-            if any(value is not None for value in percents):
+            if year not in FIFA_EQUAL_WEIGHT_PERCENT_YEARS and any(value is not None for value in percents):
                 incomplete_totals.append({
                     "year": year,
                     "missing_points": sum(value is None for value in points),
@@ -155,6 +156,10 @@ def _main_dataset_findings(dataset: dict[str, Any]) -> list[dict[str, Any]]:
             continue
         total = sum(value for value in points if value is not None)
         if total <= 0 or any(value is None for value in percents):
+            continue
+        if year in FIFA_EQUAL_WEIGHT_PERCENT_YEARS:
+            # FIFA weighted captain, coach, and media percentage shares equally.
+            # Different participation totals make raw points / total points invalid.
             continue
         for row, point, percent in zip(group, points, percents):
             assert point is not None and percent is not None
@@ -205,6 +210,10 @@ def build_report(main_path: Path, detail_path: Path) -> dict[str, Any]:
             {"code": "points_forward_fill", "severity": "confirmed_defect", "message": "DataCleaner._clean_numeric_columns() forward-fills a missing point value from the preceding player and can assign an incorrect score."},
             {"code": "missing_scores_to_zero", "severity": "confirmed_defect", "message": "DataCleaner.clean_multi_year_data() converts missing points and votes to zero, erasing the distinction between unavailable and zero."},
         ],
+        "percentage_semantics": {
+            "default": "points divided by the complete annual point total",
+            "2010-2015": "official FIFA percentage: the captain, coach, and media group percentage shares are weighted equally; it is not raw points divided by the annual point total",
+        },
     }
 
 
@@ -237,6 +246,9 @@ def render_markdown(report: dict[str, Any]) -> str:
     lines.extend(["", "## Known pipeline defects", ""])
     for finding in report["known_pipeline_defects"]:
         lines.append(f"- **{finding['severity']} — `{finding['code']}`:** {finding['message']}")
+    lines.extend(["", "## Percentage semantics", ""])
+    for years, meaning in report["percentage_semantics"].items():
+        lines.append(f"- **{years}:** {meaning}")
     lines.extend(["", "Machine-readable details are in `reports/data_quality.json`. Historical values were not repaired by this audit.", ""])
     return "\n".join(lines)
 

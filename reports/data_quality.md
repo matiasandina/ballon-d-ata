@@ -1,6 +1,6 @@
 # Ballon d'Or data-quality audit
 
-Status: **pass_with_warnings** (0 failures, 5 warnings/findings).
+Status: **pass_with_warnings** (0 failures, 2 warnings/findings).
 
 ## Main
 
@@ -142,16 +142,15 @@ Status: **pass_with_warnings** (0 failures, 5 warnings/findings).
   - Details: `{"per_year": {"2016": 30, "2017": 30, "2018": 30, "2019": 30, "2021": 30}}`
 - **warning — `missing_voting_scores`:** Points and/or percentages are unavailable for some records; blanks are preserved as unavailable, not zero.
   - Details: `{"per_year": {"2010": {"percent": 0, "points": 23}, "2011": {"percent": 0, "points": 23}, "2012": {"percent": 0, "points": 23}, "2014": {"percent": 0, "points": 23}, "2015": {"percent": 0, "points": 23}}}`
-- **confirmed_defect — `incomplete_percentage_denominator`:** Stored percentages coexist with missing points, so totals calculated from this file are incomplete.
-  - Details: `{"records": [{"available_percent_sum": 99.44, "missing_players": ["Lionel Messi", "Andrés Iniesta", "Xavi", "Wesley Sneijder", "Diego Forlán", "Cristiano Ronaldo", "Iker Casillas", "David Villa", "Didier Drogba", "Xabi Alonso", "Carles Puyol", "Samuel Eto'o", "Mesut Özil", "Arjen Robben", "Thomas Müller", "Bastian Schweinsteiger", "Maicon", "Asamoah Gyan", "Júlio César", "Cesc Fàbregas", "Miroslav Klose", "Philipp Lahm", "Dani Alves"], "missing_points": 23, "reason": "a percentage denominator cannot be validated while points are missing", "year": 2010}, {"available_percent_sum": 99.61, "missing_players": ["Lionel Messi", "Cristiano Ronaldo", "Xavi", "Andrés Iniesta", "Wayne Rooney", "Luis Suárez", "Diego Forlán", "Samuel Eto'o", "Iker Casillas", "Neymar", "Mesut Özil", "Wesley Sneijder", "Thomas Müller", "David Villa", "Bastian Schweinsteiger", "Xabi Alonso", "Sergio Agüero", "Eric Abidal", "Dani Alves", "Karim Benzema", "Cesc Fàbregas", "Nani", "Gerard Piqué"], "missing_points": 23, "reason": "a percentage denominator cannot be validated while points are missing", "year": 2011}, {"available_percent_sum": 99.9, "missing_players": ["Lionel Messi", "Cristiano Ronaldo", "Andrés Iniesta", "Xavi", "Radamel Falcao", "Iker Casillas", "Andrea Pirlo", "Didier Drogba", "Robin van Persie", "Zlatan Ibrahimović", "Xabi Alonso", "Yaya Touré", "Neymar", "Mesut Özil", "Wayne Rooney", "Gianluigi Buffon", "Sergio Agüero", "Sergio Ramos", "Manuel Neuer", "Sergio Busquets", "Gerard Piqué", "Karim Benzema", "Mario Balotelli"], "missing_points": 23, "reason": "a percentage denominator cannot be validated while points are missing", "year": 2012}, {"available_percent_sum": 100.0, "missing_players": ["Cristiano Ronaldo", "Lionel Messi", "Manuel Neuer", "Arjen Robben", "Thomas Müller", "Philipp Lahm", "Neymar", "James Rodríguez", "Toni Kroos", "Ángel Di María", "Diego Costa", "Gareth Bale", "Zlatan Ibrahimović", "Yaya Touré", "Mario Götze", "Karim Benzema", "Andrés Iniesta", "Bastian Schweinsteiger", "Javier Mascherano", "Thibaut Courtois", "David Luiz", "Paul Pogba", "Sergio Ramos"], "missing_points": 23, "reason": "a percentage denominator cannot be validated while points are missing", "year": 2014}, {"available_percent_sum": 100.0061, "missing_players": ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Robert Lewandowski", "Luis Suárez", "Thomas Müller", "Manuel Neuer", "Eden Hazard", "Andrés Iniesta", "Alexis Sánchez", "Zlatan Ibrahimović", "Yaya Touré", "Sergio Agüero", "Javier Mascherano", "Paul Pogba", "Gareth Bale", "Arturo Vidal", "Kevin De Bruyne", "James Rodríguez", "Karim Benzema", "Toni Kroos", "Arjen Robben", "Ivan Rakitić"], "missing_points": 23, "reason": "a percentage denominator cannot be validated while points are missing", "year": 2015}]}`
-- **warning — `points_percentage_inconsistency`:** Stored percentages differ from points divided by the complete annual point total by more than 0.05 percentage points.
-  - Details: `{"records": [{"calculated_percent": 23.1132, "percent": 23.36, "player": "Franck Ribéry", "points": 1127.0, "year": 2013}, {"calculated_percent": 1.4356, "percent": 1.11, "player": "Andrea Pirlo", "points": 70.0, "year": 2013}, {"calculated_percent": 0.2461, "percent": 0.36, "player": "Edinson Cavani", "points": 12.0, "year": 2013}]}`
-- **source_verification — `rank_points_inversion`:** A lower-ranked player has more points than the preceding higher-ranked player. Ranking and score semantics must be verified before correction.
-  - Details: `{"records": [{"higher_ranked": "Gareth Bale", "higher_ranked_points": 65.0, "lower_ranked": "Andrea Pirlo", "lower_ranked_points": 70.0, "year": 2013}]}`
 
 ## Known pipeline defects
 
 - **confirmed_defect — `points_forward_fill`:** DataCleaner._clean_numeric_columns() forward-fills a missing point value from the preceding player and can assign an incorrect score.
 - **confirmed_defect — `missing_scores_to_zero`:** DataCleaner.clean_multi_year_data() converts missing points and votes to zero, erasing the distinction between unavailable and zero.
+
+## Percentage semantics
+
+- **default:** points divided by the complete annual point total
+- **2010-2015:** official FIFA percentage: the captain, coach, and media group percentage shares are weighted equally; it is not raw points divided by the annual point total
 
 Machine-readable details are in `reports/data_quality.json`. Historical values were not repaired by this audit.
