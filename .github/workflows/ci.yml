@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install locked dependencies
+        run: uv sync --frozen --all-groups
+      - name: Unit tests
+        run: uv run pytest
+      - name: Dataset validation (warnings are non-blocking)
+        run: uv run python scripts/audit_data.py --check
+      - name: Confirm committed reports are current
+        run: |
+          uv run python scripts/audit_data.py
+          git diff --exit-code -- reports/data_quality.json reports/data_quality.md
+
+  # Network scraping is deliberately excluded: normal CI must be deterministic
+  # and must not depend on Wikipedia availability or live page structure.
