@@ -32,8 +32,9 @@ class DataCleaner:
     
     def _clean_numeric_columns(self, df: pd.DataFrame) -> pd.DataFrame:
         if "points" in df.columns:
-                df["points"] = df["points"].astype(str).str.replace(r'(\d)\s*\[\d+\]$', r'\1', regex=True)
-                df["points"] = pd.to_numeric(df["points"], errors="coerce").ffill()
+                df["points"] = df["points"].astype("string").str.replace(r'(\d)\s*\[\d+\]$', r'\1', regex=True)
+                # A blank score is unavailable, not the preceding player's score.
+                df["points"] = pd.to_numeric(df["points"], errors="coerce")
         return df
 
     def _clean_rank_column(self, df: pd.DataFrame, year: int) -> pd.DataFrame:
@@ -66,8 +67,9 @@ class DataCleaner:
             missing_mask = group["rank"].isna()
             df.loc[group.index[missing_mask], "rank"] = str(non_null_count + 1)
 
-        df["points"] = df["points"].astype(float).fillna(0).astype(int)
-        df["votes"] = df["votes"].astype(float).fillna(0).astype(int)
+        # Nullable integers preserve the difference between zero and unavailable.
+        df["points"] = pd.to_numeric(df["points"], errors="coerce").astype("Int64")
+        df["votes"] = pd.to_numeric(df["votes"], errors="coerce").astype("Int64")
         df["rank"] = df["rank"].astype(int)
         return df
 
@@ -82,10 +84,14 @@ class DataCleaner:
             year_mask = df["year"] == year
             if df.loc[year_mask, "percent"].isnull().all():
                 try:
-                    total_points = df.loc[year_mask, "points"].astype(float).sum()
+                    year_points = pd.to_numeric(df.loc[year_mask, "points"], errors="coerce")
+                    if year_points.isna().any():
+                        # Calculating from a partial total creates plausible but false values.
+                        continue
+                    total_points = year_points.sum()
                     if total_points > 0:
                         df.loc[year_mask, "percent"] = (
-                            (df.loc[year_mask, "points"].astype(float) * 100 / total_points).round(4)
+                            (year_points * 100 / total_points).round(4)
                         )
                 except Exception as e:
                     print(f"Error calculating percentage for year {year}: {e}")
