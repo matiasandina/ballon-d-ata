@@ -65,9 +65,8 @@ Other limitations remain intentionally out of scope: ranking gaps and ties vary 
 
 ## Prioritized follow-up corrections
 
-The 2018 winner score and incomplete percentages have now been corrected as one sourced unit; see [the correction record](2018_VOTING_CORRECTION.md). The 2025 scores published after the original ranking import have also been added; see [the 2025 correction record](2025_VOTING_CORRECTION.md). The 2013 FIFA-era field semantics and transcription errors are resolved in [the 2013 correction record](2013_FIFA_RESULTS_CORRECTION.md).
+The 2018 winner score and incomplete percentages have now been corrected as one sourced unit; see [the correction record](2018_VOTING_CORRECTION.md). The 2025 scores published after the original ranking import have also been added; see [the 2025 correction record](2025_VOTING_CORRECTION.md). The 2013 FIFA-era field semantics and transcription errors are resolved in [the 2013 correction record](2013_FIFA_RESULTS_CORRECTION.md). The meaning and sourced repair of the five blank national-team editions are recorded in [the nationality backfill](NATIONALITY_BACKFILL.md).
 
-1. **Backfill nationality only with source evidence.** It is blank for every row in 2016–2019 and 2021. Decide whether nationality means citizenship, national team, or the label published by the award source before adding values.
-2. **Recover raw points for 2010–2012 and 2014–2015.** These FIFA-era years contain official percentages but blank points. Preserve the blanks until their juror-level ballots or reliable aggregate tables are processed.
+1. **Recover raw points for 2010–2012 and 2014–2015.** These FIFA-era years contain official percentages but blank points. Preserve the blanks until their juror-level ballots or reliable aggregate tables are processed.
 
 Any historical correction should cite a stable source, include a focused fixture/regression test, and update both generated reports. Decisions about nationality definitions, voting-era schema, tied ranks, and whether an unpublished score is represented as blank rather than a separate status field require manual agreement.

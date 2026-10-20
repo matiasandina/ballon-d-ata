@@ -1,6 +1,6 @@
 # Ballon d'Or data-quality audit
 
-Status: **pass_with_warnings** (0 failures, 2 warnings/findings).
+Status: **pass_with_warnings** (0 failures, 1 warnings/findings).
 
 ## Main
 
@@ -94,7 +94,7 @@ Status: **pass_with_warnings** (0 failures, 2 warnings/findings).
 | rank | 0 |
 | player | 0 |
 | club | 0 |
-| nationality | 150 |
+| nationality | 0 |
 | points | 115 |
 | percent | 0 |
 | position | 1975 |
@@ -138,8 +138,6 @@ Status: **pass_with_warnings** (0 failures, 2 warnings/findings).
 
 ## Findings
 
-- **warning — `missing_nationality`:** Nationality is unavailable for some year groups.
-  - Details: `{"per_year": {"2016": 30, "2017": 30, "2018": 30, "2019": 30, "2021": 30}}`
 - **warning — `missing_voting_scores`:** Points and/or percentages are unavailable for some records; blanks are preserved as unavailable, not zero.
   - Details: `{"per_year": {"2010": {"percent": 0, "points": 23}, "2011": {"percent": 0, "points": 23}, "2012": {"percent": 0, "points": 23}, "2014": {"percent": 0, "points": 23}, "2015": {"percent": 0, "points": 23}}}`
 

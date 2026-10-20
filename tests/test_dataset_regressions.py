@@ -57,3 +57,17 @@ def test_2013_fifa_results_preserve_group_weighted_percentages():
     assert by_player["Robert Lewandowski"]["points"] == "45.0"
     assert by_player["Edinson Cavani"]["points"] == "18.0"
     assert (by_player["Xavi"]["rank"], by_player["Xavi"]["percent"]) == ("15.0", "0.81")
+
+
+def test_2016_to_2021_affected_editions_have_national_teams():
+    affected_years = {"2016", "2017", "2018", "2019", "2021"}
+    with Path("data/ballon_dor_all_years.csv").open(encoding="utf-8", newline="") as handle:
+        rows = [row for row in csv.DictReader(handle) if row["year"] in affected_years]
+
+    assert len(rows) == 150
+    assert all(row["nationality"] for row in rows)
+    by_key = {(row["year"], row["player"]): row["nationality"] for row in rows}
+    assert by_key[("2016", "Luis Suárez")] == "Uruguay"
+    assert by_key[("2017", "Edin Džeko")] == "Bosnia and Herzegovina"
+    assert by_key[("2019", "Son Heung-min")] == "South Korea"
+    assert by_key[("2021", "Jorginho")] == "Italy"

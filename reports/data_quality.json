@@ -3,7 +3,7 @@
   "summary": {
     "status": "pass_with_warnings",
     "failure_count": 0,
-    "warning_count": 2
+    "warning_count": 1
   },
   "datasets": {
     "main": {
@@ -170,7 +170,7 @@
         "rank": 0,
         "player": 0,
         "club": 0,
-        "nationality": 150,
+        "nationality": 0,
         "points": 115,
         "percent": 0,
         "position": 1975
@@ -236,20 +236,6 @@
     }
   },
   "findings": [
-    {
-      "code": "missing_nationality",
-      "severity": "warning",
-      "message": "Nationality is unavailable for some year groups.",
-      "context": {
-        "per_year": {
-          "2016": 30,
-          "2017": 30,
-          "2018": 30,
-          "2019": 30,
-          "2021": 30
-        }
-      }
-    },
     {
       "code": "missing_voting_scores",
       "severity": "warning",
