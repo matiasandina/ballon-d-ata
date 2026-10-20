@@ -171,8 +171,8 @@
         "player": 0,
         "club": 0,
         "nationality": 150,
-        "points": 146,
-        "percent": 31,
+        "points": 145,
+        "percent": 30,
         "position": 1975
       },
       "duplicate_player_year": [],
@@ -275,10 +275,6 @@
           "2015": {
             "points": 23,
             "percent": 0
-          },
-          "2018": {
-            "points": 1,
-            "percent": 1
           },
           "2025": {
             "points": 30,
@@ -446,15 +442,6 @@
               "Ivan Rakitić"
             ],
             "available_percent_sum": 100.0061,
-            "reason": "a percentage denominator cannot be validated while points are missing"
-          },
-          {
-            "year": 2018,
-            "missing_points": 1,
-            "missing_players": [
-              "Luka Modrić"
-            ],
-            "available_percent_sum": 99.9998,
             "reason": "a percentage denominator cannot be validated while points are missing"
           }
         ]
