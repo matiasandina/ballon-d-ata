@@ -1,34 +1,34 @@
 year,rank,player,club,nationality,points,percent,position
-2025,1.0,Ousmane Dembélé,Paris Saint-Germain,France,,,Forward
-2025,2.0,Lamine Yamal,Barcelona,Spain,,,Forward
-2025,3.0,Vitinha,Paris Saint-Germain,Portugal,,,Midfielder
-2025,4.0,Mohamed Salah,Liverpool,Egypt,,,Forward
-2025,5.0,Raphinha,Barcelona,Brazil,,,Forward
-2025,6.0,Achraf Hakimi,Paris Saint-Germain,Morocco,,,Defender
-2025,7.0,Kylian Mbappé,Real Madrid,France,,,Forward
-2025,8.0,Cole Palmer,Chelsea,England,,,Forward
-2025,9.0,Gianluigi Donnarumma,Paris Saint-Germain,Italy,,,Goalkeeper
-2025,10.0,Nuno Mendes,Paris Saint-Germain,Portugal,,,Defender
-2025,11.0,Pedri,Barcelona,Spain,,,Midfielder
-2025,12.0,Khvicha Kvaratskhelia,Napoli~~~Paris Saint-Germain,Georgia,,,Forward
-2025,13.0,Harry Kane,Bayern Munich,England,,,Forward
-2025,14.0,Désiré Doué,Paris Saint-Germain,France,,,Midfielder
-2025,15.0,Viktor Gyökeres,Sporting CP,Sweden,,,Forward
-2025,16.0,Vinicius Junior,Real Madrid,Brazil,,,Forward
-2025,17.0,Robert Lewandowski,Barcelona,Poland,,,Forward
-2025,18.0,Scott McTominay,Manchester United~~~Napoli,Scotland,,,Midfielder
-2025,19.0,João Neves,Paris Saint-Germain,Portugal,,,Midfielder
-2025,20.0,Lautaro Martínez,Inter Milan,Argentina,,,Forward
-2025,21.0,Serhou Guirassy,Borussia Dortmund,Guinea,,,Forward
-2025,22.0,Alexis Mac Allister,Liverpool,Argentina,,,Midfielder
-2025,23.0,Jude Bellingham,Real Madrid,England,,,Midfielder
-2025,24.0,Fabián Ruiz,Paris Saint-Germain,Spain,,,Midfielder
-2025,25.0,Denzel Dumfries,Inter Milan,Netherlands,,,Defender
-2025,26.0,Erling Haaland,Manchester City,Norway,,,Forward
-2025,27.0,Declan Rice,Arsenal,England,,,Midfielder
-2025,28.0,Virgil van Dijk,Liverpool,Netherlands,,,Defender
-2025,29.0,Florian Wirtz,Bayer Leverkusen,Germany,,,Midfielder
-2025,30.0,Michael Olise,Bayern Munich,France,,,Forward
+2025,1.0,Ousmane Dembélé,Paris Saint-Germain,France,1380.0,20.597,Forward
+2025,2.0,Lamine Yamal,Barcelona,Spain,1059.0,15.806,Forward
+2025,3.0,Vitinha,Paris Saint-Germain,Portugal,703.0,10.4925,Midfielder
+2025,4.0,Mohamed Salah,Liverpool,Egypt,657.0,9.806,Forward
+2025,5.0,Raphinha,Barcelona,Brazil,620.0,9.2537,Forward
+2025,6.0,Achraf Hakimi,Paris Saint-Germain,Morocco,484.0,7.2239,Defender
+2025,7.0,Kylian Mbappé,Real Madrid,France,378.0,5.6418,Forward
+2025,8.0,Cole Palmer,Chelsea,England,211.0,3.1493,Forward
+2025,9.0,Gianluigi Donnarumma,Paris Saint-Germain,Italy,172.0,2.5672,Goalkeeper
+2025,10.0,Nuno Mendes,Paris Saint-Germain,Portugal,171.0,2.5522,Defender
+2025,11.0,Pedri,Barcelona,Spain,124.0,1.8507,Midfielder
+2025,12.0,Khvicha Kvaratskhelia,Napoli~~~Paris Saint-Germain,Georgia,123.0,1.8358,Forward
+2025,13.0,Harry Kane,Bayern Munich,England,112.0,1.6716,Forward
+2025,14.0,Désiré Doué,Paris Saint-Germain,France,74.0,1.1045,Midfielder
+2025,15.0,Viktor Gyökeres,Sporting CP,Sweden,56.0,0.8358,Forward
+2025,16.0,Vinicius Junior,Real Madrid,Brazil,51.0,0.7612,Forward
+2025,17.0,Robert Lewandowski,Barcelona,Poland,49.0,0.7313,Forward
+2025,18.0,Scott McTominay,Manchester United~~~Napoli,Scotland,45.0,0.6716,Midfielder
+2025,19.0,João Neves,Paris Saint-Germain,Portugal,40.0,0.597,Midfielder
+2025,20.0,Lautaro Martínez,Inter Milan,Argentina,37.0,0.5522,Forward
+2025,21.0,Serhou Guirassy,Borussia Dortmund,Guinea,25.0,0.3731,Forward
+2025,22.0,Alexis Mac Allister,Liverpool,Argentina,21.0,0.3134,Midfielder
+2025,23.0,Jude Bellingham,Real Madrid,England,21.0,0.3134,Midfielder
+2025,24.0,Fabián Ruiz,Paris Saint-Germain,Spain,20.0,0.2985,Midfielder
+2025,25.0,Denzel Dumfries,Inter Milan,Netherlands,20.0,0.2985,Defender
+2025,26.0,Erling Haaland,Manchester City,Norway,18.0,0.2687,Forward
+2025,27.0,Declan Rice,Arsenal,England,13.0,0.194,Midfielder
+2025,28.0,Virgil van Dijk,Liverpool,Netherlands,7.0,0.1045,Defender
+2025,29.0,Florian Wirtz,Bayer Leverkusen,Germany,5.0,0.0746,Midfielder
+2025,30.0,Michael Olise,Bayern Munich,France,4.0,0.0597,Forward
 2024,1.0,Rodri,Manchester City,Spain,1170.0,17.6391,Midfielder
 2024,2.0,Vinícius Júnior,Real Madrid,Brazil,1129.0,17.021,Forward
 2024,3.0,Jude Bellingham,Real Madrid,England,917.0,13.8248,Midfielder

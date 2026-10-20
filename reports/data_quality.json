@@ -171,8 +171,8 @@
         "player": 0,
         "club": 0,
         "nationality": 150,
-        "points": 145,
-        "percent": 30,
+        "points": 115,
+        "percent": 0,
         "position": 1975
       },
       "duplicate_player_year": [],
@@ -275,10 +275,6 @@
           "2015": {
             "points": 23,
             "percent": 0
-          },
-          "2025": {
-            "points": 30,
-            "percent": 30
           }
         }
       }
