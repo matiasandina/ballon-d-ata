@@ -38,6 +38,18 @@ uv run main.py
 uv run visuals/bar_chart_races.py
 ```
 
+### 4. ✅ Tests and data-quality audit
+
+The normal validation path is fully offline and does not scrape Wikipedia:
+
+```bash
+uv sync --frozen --all-groups
+uv run pytest
+uv run python scripts/audit_data.py --check
+```
+
+To regenerate the machine-readable JSON and Markdown reports, run `uv run python scripts/audit_data.py`. See [Data pipeline and reproducibility](docs/DATA_PIPELINE.md) for the baseline, safe scraper reproduction, limitations, and prioritized findings.
+
 ## ✨ Features
 
 ### 🕷️ Web Scraping Tool
